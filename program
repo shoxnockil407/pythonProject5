@@ -1,0 +1,33 @@
+import pygame
+import sys
+
+data = input().split()
+if len(data) != 2:
+    print('Неправильный формат ввода')
+    sys.exit()
+
+
+def draw(screen, clr):
+    if int(str(n)[-1]) % 2 != 0:
+        screen.fill((255, 255, 255))
+    else:
+        screen.fill((0, 0, 0))
+        clr = (255, 255, 254)
+    for i in range(n):
+        for j in range(i % 2, n, 2):
+            pygame.draw.rect(screen, clr, (j * size_rect, i * size_rect, size_rect, size_rect))
+
+
+pygame.init()
+nums = data
+a = int(nums[0])
+n = int(nums[1])
+size = width, height = a, a
+pygame.display.set_caption('Шахматная клетка')
+screen = pygame.display.set_mode(size)
+size_rect = width / n
+draw(screen, (0, 0, 0))
+pygame.display.flip()
+while pygame.event.wait().type != pygame.QUIT:
+    pass
+pygame.quit()
